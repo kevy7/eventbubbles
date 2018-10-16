@@ -1,0 +1,14 @@
+{
+  "name": "eventbubbles",
+  "version": "1.0.0",
+  "description": "The social event creation app. Create events with friends. Pariticipate, volunteer, and invite others to join!",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Kevin Yang",
+  "license": "ISC",
+  "dependencies": {
+    "faker": "^4.1.0"
+  }
+}
