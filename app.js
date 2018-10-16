@@ -2,3 +2,4 @@
 /* ejs files will be placed in the /views folder */
 
 
+/*  Do we have to type this command in all the time? "git push -u origin master"? */
