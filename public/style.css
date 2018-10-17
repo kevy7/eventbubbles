@@ -132,3 +132,69 @@ ul li a:hover{
     display: block;
 }
 
+
+
+
+
+
+/****************** Events/eventbubbles ********************/
+/* Events takes up 80% of the container, while verticalnavigation bar takes up 20% of the container */
+.Events{
+    float: right;
+    width: 80%;
+    background-color: #ddd;
+    
+    display: grid;
+    grid-template-columns: 33.33% 33.33% 33.33%;
+}
+
+.eventimage{
+    height: 100px;
+    width: 100px;
+    border-radius: 50%;
+    margin-left: auto;
+    margin-right:auto;
+    display: block;
+    margin-top: 5px;
+}
+
+.eventimage:hover{
+    cursor: pointer;
+}
+
+.eventimage:hover .eventbubble p{
+    color: white;
+}
+
+.eventicons{
+    width: 60%;
+    margin-left:auto;
+    margin-right:auto;
+}
+
+.iconright{
+    float: right
+}
+
+/* Edit all icons */
+i{
+    margin-left:2px;
+    margin-right:2px;
+}
+
+/* When all icons are hovered over, highlight them with this color #ddd */
+i:hover{
+    /*color:#ddd;*/
+    /* Place it as white for now */
+    color: white;
+}
+
+.eventbubble p{
+    margin: 0px;
+    text-align: center;
+}
+
+.eventbubble p:hover{
+    color: white;
+    cursor: pointer;
+}
