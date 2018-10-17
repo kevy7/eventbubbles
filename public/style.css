@@ -55,7 +55,7 @@ body {
 
 .container{
     height: 1000px;
-    background-color: gray;
+    background-color: gray; /*Remove this later*/
     margin-left:15%;
     margin-right:15%;
    
