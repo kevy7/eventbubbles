@@ -1,0 +1,141 @@
+body {
+    margin: 0;
+    backgroun-color: white;
+}
+
+/****** hide element *******/
+.hide{
+    display: none;
+}
+
+/************ Editing the Navbar ************/
+
+.navbar{
+    
+    width: 100%;
+    margin: 0px;
+    height: 50px;
+    background: black;
+    color: white;
+    overflow: hidden;
+}
+
+.home{
+    float: left;
+    margin-left:15%;
+}
+
+.rightbar{
+    float: right;
+    margin-right:15%;
+}
+
+.navbar div a{
+    text-align: center;
+    line-height: 50px;
+    padding-left: 10px;
+    padding-right: 10px;
+    font-size: 15px;
+    height: 100%;
+    padding: 20px 18px;
+}
+
+.navbar div a:hover{
+    cursor: pointer;
+    background-color: gray;
+}
+
+
+/********** Editing the mainbody ************/
+
+.container{
+    height: 1000px;
+    background-color: gray;
+    margin-left:15%;
+    margin-right:15%;
+   
+}
+
+.vertnavbar{
+    float: left;
+    width: 20%;
+    background: white;
+    height: 100%;
+    
+}
+
+.vertnavbar .navbarcontents{
+    width:100%;
+    background-color: white;
+    text-indent: 10px;
+    height: 40px;
+    line-height: 40px;
+}
+
+.vertnavbar .navbarcontents a{
+    width: 100%;
+    height: 100%
+}
+
+.vertnavbar .navbarcontents:hover{
+    background-color: gray;
+    color: white;
+}
+
+/*** Working with sub contents ***/
+
+.subcontent .content{
+    width: 100%;
+    background-color: gray;
+    text-indent: 15px;
+    height: 40px;
+    line-height: 40px;
+}
+
+
+
+
+
+
+
+
+
+
+/**** New vertnavbar styles here ****/
+
+.vertnavbarfields, .subcontent{
+    height: 100%;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    
+}
+
+ul li{
+    width: 100%;
+    
+}
+
+ul li a{
+    width: 100%;
+    float: left;
+    margin: 0;
+    text-indent: 10px;
+    height: 30px;
+    line-height: 30px;
+    
+}
+
+.subcontent li a{
+    text-indent: 20px;
+}
+
+ul li a:hover{
+    background: gray;
+    color: white;
+}
+
+
+
+
+/* Set the height of all ul li to 20px  */
