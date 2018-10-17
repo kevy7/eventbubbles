@@ -81,12 +81,18 @@ body {
 
 /**** New vertnavbar styles here ****/
 
-.vertnavbarfields, .subcontent{
+.vertnavbarfields{
     height: 100%;
     list-style-type: none;
     margin: 0;
     padding: 0;
-    
+}
+
+.subcontent{
+    height: 100%;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
 }
 
 ul li{
@@ -107,6 +113,8 @@ ul li a{
 
 .subcontent li a{
     text-indent: 20px;
+    display: none;
+ 
 }
 
 ul li a:hover{
@@ -115,13 +123,12 @@ ul li a:hover{
     cursor: pointer;
 }
 
-.subcontent{
-    display: block;
-}
+
 
 
 /**** Display friends dropdown when you hover over friends ****/
 
-
-
+.friends:hover .subcontent li a{
+    display: block;
+}
 
