@@ -9,6 +9,7 @@
   "author": "Kevin Yang",
   "license": "ISC",
   "dependencies": {
+    "ejs": "^2.6.1",
     "faker": "^4.1.0"
   }
 }

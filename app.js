@@ -6,9 +6,13 @@
 
 var express = require("express");
 var app = express(); //Now we can use functions from the express library
-app.use(express.static("public"));
+
 
 var faker = require("faker"); //With this, we can create fake data from the faker library
+
+
+app.use(express.static("public")); //This is placed here so I can use my css or even js files. It's linking the public directory to this code
+
 
 
 /********* "GET" requests created below **********/
@@ -17,7 +21,8 @@ var faker = require("faker"); //With this, we can create fake data from the fake
 //We're going to make this the home page for now, the login page should be the main page
 app.get("/", function(req, res){
     
-   res.render("index"); 
+    //Remember, in order to render a page using ejs, I need to install the ejs package
+    res.render("index.ejs");
     
 });
 
