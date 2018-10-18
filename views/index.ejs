@@ -45,6 +45,37 @@
         </ul> 
     </div> <!-- vertnavbar -->
     
+    
+    
+    
+    
+    
+    <!-- This is only placed here to test out the layout of my website. This will be removed once the website goes live -->
+    
+    <div class="formsdiv">
+    
+    
+        <form action="/numofevents" method="POST">
+            
+            <label for="numofuserevents">Enter num of events here: </label>
+            <input type="number" name="numofuserevents" placeholder="Enter num here">
+            <button>Enter Here</button>
+            <p>word here <%= send %> </p>
+            
+            
+            
+        </form>
+        
+    
+    </div>
+    
+    
+    
+    
+    
+    
+    
+    
 
     <div class="Events"> <!-- Event bubbles will be placed in here -->
         
@@ -68,12 +99,55 @@
         
         
         
+        
+        <!-- This loop will create your eventbubbles based on the num of inputs the user entered in -->
+        <%  for (var i = 0; i < 4; i++) {   %>
+        
+        
+        <div class="eventbubble">
+            
+            <img class="eventimage" src="https://images.unsplash.com/photo-1528360983277-13d401cdc186?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=89da2618e73e395491d2c33022d0564d&auto=format&fit=crop&w=1350&q=80">
+            <!--icons will be placed here-->
+            
+            <div class="eventicons">
+                
+                <i class="fa fa-users users" aria-hidden="true"></i>
+                <i class="fa fa-comments iconright" aria-hidden="true"></i>
+                <i class="fa fa-video-camera iconright" aria-hidden="true"></i>
+                
+            </div>
+            
+            <p class="eventtitle"> <%= FakeEventName %> </p>
+            
+        </div>
+        
+        <% } %>
+        
+        
+        
+        
         <!-- create dynamic events below, our css file should automatically style each event for us -->
         <!--
             I think I need to create a for loop here. 
         
         -->
         
+        
+        <!--
+        
+        //Only initiate this function when send is greater than o, else don't do anything
+         for (var i = 0; i <= send; i++) {
+         
+         
+            
+         
+         
+         }
+        
+        
+        
+        
+        -->
         
         
     </div>

@@ -9,6 +9,7 @@
   "author": "Kevin Yang",
   "license": "ISC",
   "dependencies": {
+    "body-parser": "^1.18.3",
     "ejs": "^2.6.1",
     "faker": "^4.1.0"
   }
