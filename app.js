@@ -32,13 +32,21 @@ var fakeeventname = [];
 
 var fakeeventimages = [];
 
-var FakeEventName = faker.lorem.words();
+var FakeEventName = [];
 
 
 
 /** based on user's input, output event names and event images from faker.js **/
 
-
+function GenerateFakeEventName(iteration){
+    
+    for (var i = 0; i < iteration; i++){
+    
+        FakeEventName.push(faker.lorem.words());    
+        
+    }
+    
+}
 
 
 
@@ -51,17 +59,6 @@ var FakeEventName = faker.lorem.words();
 app.get("/", function(req, res){
     
     
-    
-    /** based on the user's input, output event names and event images from faker.js **/
-    
-    // for (var i = 0; i <= usersinput; i++){
-        
-    //     fakeeventimages.push(faker.image.nightlife());
-        
-    // }
-    
-    
-    
     /*
     Use this to generate random words
     faker.lorem.words()
@@ -71,11 +68,22 @@ app.get("/", function(req, res){
     
     */
     
+    GenerateFakeEventName(usersinput);  //generates a list of fake names and pushes it to FakeEventName array
     
     
     
     //Remember, in order to render a page using ejs, I need to install the ejs package
-    res.render("index.ejs", {send: usersinput, FakeEventName: FakeEventName});
+    res.render("index.ejs", {send: usersinput, FakeEventName: FakeEventName, count: usersinput});
+    
+});
+
+
+//Set a GET request to eventpage.ejs
+
+app.get("/event/:eventname", function(req, res){
+    
+    //How do I return, the event name?
+    res.render("eventpage.ejs");
     
 });
 
@@ -124,3 +132,22 @@ app.listen(process.env.PORT, process.env.IP, function(){
 
 
 
+
+
+
+
+/*
+What to do next?
+    -find a way to redirect user to eventpage.ejs when they clicked on an event bubble
+    -you need to find a way to inlcude the event name in the url
+        -for example:
+        
+        /event/eventnamehere
+        
+        -This will redirect the user to the desired web page
+        
+        
+
+
+
+*/

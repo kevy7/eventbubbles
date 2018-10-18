@@ -101,7 +101,8 @@
         
         
         <!-- This loop will create your eventbubbles based on the num of inputs the user entered in -->
-        <%  for (var i = 0; i < 4; i++) {   %>
+        <%  for (var i = 0; i < count; i++) {   %>
+        <!-- count is passed down from the variable usersinput in app.js -->
         
         
         <div class="eventbubble">
@@ -117,7 +118,7 @@
                 
             </div>
             
-            <p class="eventtitle"> <%= FakeEventName %> </p>
+            <p class="eventtitle"> <%= FakeEventName[i] %> </p>
             
         </div>
         
