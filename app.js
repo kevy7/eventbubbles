@@ -28,10 +28,6 @@ app.use(bodyParser.urlencoded({extended: true}));
 /*** Global Variables ***/
 var usersinput = 0;
 
-var fakeeventname = [];
-
-var fakeeventimages = [];
-
 var FakeEventName = [];
 
 
@@ -82,8 +78,11 @@ app.get("/", function(req, res){
 
 app.get("/event/:eventname", function(req, res){
     
+    var eventname = req.params.eventname;
+    
+    //How do I retrieve the image url form script.js?
     //How do I return, the event name?
-    res.render("eventpage.ejs");
+    res.render("eventpage.ejs", {eventname: eventname});
     
 });
 
