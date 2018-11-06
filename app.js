@@ -6,19 +6,19 @@
 
 var express = require("express");
 var app = express(); //Now we can use functions from the express library
-
-
 var faker = require("faker"); //With this, we can create fake data from the faker library
-
-
 app.use(express.static("public")); //This is placed here so I can use my css or even js files. It's linking the public directory to this code
-
-
 /*  This is used to retreive data from our forms */
 var bodyParser = require("body-parser");
 //Then, you need to write the following code below, in order to retreive data from the user via a form
-
 app.use(bodyParser.urlencoded({extended: true}));
+
+
+
+/*** Require database models here ***/
+var User = require("./models/users");
+var Events = require("./models/events");
+
 
 
 
