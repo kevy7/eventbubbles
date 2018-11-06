@@ -1,6 +1,6 @@
 body {
     margin: 0;
-    background-color: white;
+    background-color: rgb(239, 239, 239);
 }
 
 /****** hide element *******/
@@ -55,10 +55,11 @@ body {
 /********** Editing the mainbody ************/
 
 .container{
-    height: 1000px;
-    background-color: gray; /*Remove this later*/
+    /*height: 1000px;*/
+    /*background-color: gray; */
     margin-left:15%;
     margin-right:15%;
+    background-color: rgb(239, 239, 239);
    
 }
 
@@ -210,41 +211,102 @@ i:hover{
 .eventpage{
     width: 80%;
     float: right;
-    background-color: white;
+    background-color: rgb(239, 239, 239);
+    /*background-color: white;*/
     height: 700px;
 }
 
-.eventpage .eventtitleheader{
+.eventpage .titleandheader .eventtitleheader{
     text-align: center;
-    margin-top: 10px;
-    margin-bottom: 10px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    margin: 0px;
 }
 
-.eventpageimage{
+.titleandheader .eventpageimage{
 
-    width: 100%;
+    width: 90%;
     height: 250px;
     border-radius: .25rem;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
 
 }
 
 .eventpagedescription{
     width:100%;
-    background-color: gray;
-    margin-top: 10px;
+    /*background-color: gray;*/
     
 }
 
 .eventpagedescription *{
     margin: 0px;
-}
-
-.eventpagetaskstab{
-    margin-top: 10px;
+    
 }
 
 .eventpagetaskstab *{
     margin: 0px;
+}
+
+.eventpagefriends *{
+    margin: 0px;
+}
+
+.eventpagevideosandphotos *{
+    margin: 0px;
+}
+
+hr{
+    color: #ddd;
+}
+
+.eventpage div{
+    
+    background-color: white;
+    margin-top: 3px;
+    margin-bottom: 3px;
+    
+    /* Add padding to each div element */
+    padding-top: 10px;
+    padding-bottom: 10px;
+   
+}
+
+.eventpage div *{
+    text-indent: 10px;
+}
+
+
+
+
+
+
+
+/******* Editing the friends section **********/
+
+
+/* We want to set the height of .listsfriends first */
+.eventpage .eventpagefriends .listfriends{
+    height: 150px;
+    width: 80%;
+    display: box;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+
+/* This is a test */
+
+.eventpage .eventpagefriends .listfriends .friendelement .friend1{
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: blue;
+    float: left;
+    margin-left: 5px;
+    margin-right: 5px;
+    padding: 0px;
 }
 
 
