@@ -23,6 +23,7 @@ body {
     background: black;
     color: white;
     overflow: hidden;
+    
 }
 
 .home{
@@ -133,6 +134,30 @@ ul li a:hover{
 .friends:hover .subcontent li a{
     display: block;
 }
+
+
+/***** Styling the jumbotron ******/
+.jumbotron{
+    height: 150px;
+    width: 80%;
+    float: right;
+    background-color: white;
+    
+}
+
+.jumbocontent{
+    
+    padding: 25px;
+    
+    
+}
+
+.jumbotron h4, h2{
+    text-align: center;
+    margin:0px;
+}
+
+
 
 
 
@@ -315,26 +340,6 @@ hr{
 
 
 
-
-/****** Editing the form *******/
-
-.formsdiv{
-    
-    width: 80%;
-    float: right;
-    background-color: white;
-    height: 200px;
-}
-
-
-form{
-    width: 70%;
-    margin-left: auto;
-    margin-right: auto;
-    margin-top:10%;
-    margin-bottom: 10%
-    
-}
 
 
 

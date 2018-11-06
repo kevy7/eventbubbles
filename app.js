@@ -28,21 +28,7 @@ app.use(bodyParser.urlencoded({extended: true}));
 /*** Global Variables ***/
 var usersinput = 0;
 
-var FakeEventName = [];
 
-
-
-/** based on user's input, output event names and event images from faker.js **/
-
-function GenerateFakeEventName(iteration){
-    
-    for (var i = 0; i < iteration; i++){
-    
-        FakeEventName.push(faker.lorem.words());    
-        
-    }
-    
-}
 
 
 
@@ -64,12 +50,12 @@ app.get("/", function(req, res){
     
     */
     
-    GenerateFakeEventName(usersinput);  //generates a list of fake names and pushes it to FakeEventName array
+     //generates a list of fake names and pushes it to FakeEventName array
     
     
     
     //Remember, in order to render a page using ejs, I need to install the ejs package
-    res.render("index.ejs", {send: usersinput, FakeEventName: FakeEventName, count: usersinput});
+    res.render("index.ejs", {});
     
 });
 
@@ -106,15 +92,6 @@ app.get("/event/:eventname", function(req, res){
 app.post("/numofevents", function(req, res){
     
     
-    /*** This "POST" request actually works! It successfully redirects us back to our page***/
-    //console.log(req.body.numofuserevents);
-    usersinput = req.body.numofuserevents;
-    
-    console.log(usersinput);
-    
-
-    
-    res.redirect("/");  //redirect us back to the index.ejs when we're finished with our code
     
 });
 
