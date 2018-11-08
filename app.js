@@ -12,12 +12,16 @@ app.use(express.static("public")); //This is placed here so I can use my css or 
 var bodyParser = require("body-parser");
 //Then, you need to write the following code below, in order to retreive data from the user via a form
 app.use(bodyParser.urlencoded({extended: true}));
-
+var mongoose = require("mongoose");
+mongoose.connect("mongodb://localhost:27017/reference_demo", {
+    useNewUrlParser:true
+});
 
 
 /*** Require database models here ***/
 var User = require("./models/users");
 var Events = require("./models/events");
+var Comments = require("./models/comments");
 
 
 

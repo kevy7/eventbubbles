@@ -17,11 +17,20 @@ var eventSchema = new mongoose.Schema({
        ],
     eventComments: [
             {
+                //List of comments that were posted into this event
                 type: mongoose.Schema.Types.ObjectId,
-                ref: 'Comments'
+                ref: 'Comments',
+                commentCreatedBy: {
+                    
+                    //The user that created this comment
+                    type: mongoose.Schema.Types.ObjectId,
+                    ref: "User"
+                }
             }
         ],
     createdby: {
+        
+            //The user that created this event
             type: mongoose.Schema.Types.ObjectId,
             ref: "User"
     }

@@ -12,14 +12,6 @@ var userSchema = new mongoose.Schema({
             type: mongoose.Schema.Types.ObjectId,
             ref: 'Events'
         }
-       ],
-   comments: [
-        {
-            //These are the list of comments/ids of the comments that the user created
-            type: mongoose.Schema.Types.ObjectId,
-            ref: 'Comments'
-        }
-       
        ]
    
 });
