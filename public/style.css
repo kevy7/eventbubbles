@@ -60,7 +60,8 @@ body {
     /*background-color: gray; */
     margin-left:15%;
     margin-right:15%;
-    background-color: rgb(239, 239, 239);
+    /*background-color: rgb(239, 239, 239);*/
+    background-color: white;
    
 }
 
@@ -138,7 +139,6 @@ ul li a:hover{
 
 /***** Styling the jumbotron ******/
 .jumbotron{
-    height: 150px;
     width: 80%;
     float: right;
     background-color: white;
@@ -159,7 +159,21 @@ ul li a:hover{
 
 
 
+.iconsTron{
+    background-color: white;
+}
 
+.iconsTron i{
+    float: right;
+    font-size: 25px;
+    padding:10px;
+}
+
+
+/* The style below might be removed later */
+.iconsTron i:hover{
+    color: gray;
+}
 
 
 
@@ -231,7 +245,7 @@ i:hover{
 
 
 
-/************* eventpage.ejs style **************/
+/************* eventpage.ejs style - /events/:id **************/
 
 .eventpage{
     width: 80%;
@@ -304,6 +318,27 @@ hr{
 
 
 
+
+
+/****** newEvent.ejs - POST request: "/events" ******/
+.newEvent{
+    float:right;
+    width: 80%;
+    background-color: white;
+}
+
+.inputEvent{
+    display: grid;
+    grid-template-columns: 100%;
+    
+    width: 65%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.newEvent h1{
+    text-align: center;
+}
 
 
 

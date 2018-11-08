@@ -22,7 +22,7 @@ mongoose.connect("mongodb://localhost:27017/reference_demo", {
 var User = require("./models/users");
 var Events = require("./models/events");
 var Comments = require("./models/comments");
-
+var eventAddress = require("./models/eventAdress");
 
 
 
@@ -40,9 +40,16 @@ var usersinput = 0;
 
 /********* "GET" requests created below **********/
 
+app.get("/", function(req, res){
+   
+   res.send("This is a temporary landing page for now"); 
+    
+});
+
+
 
 //We're going to make this the home page for now, the login page should be the main page
-app.get("/", function(req, res){
+app.get("/events", function(req, res){
     
     
     /*
@@ -64,15 +71,28 @@ app.get("/", function(req, res){
 });
 
 
+
+//Get request to the event creation page
+app.get("/events/new", function(req, res){
+    
+   res.render("newEvent.ejs");
+   //This page contains the form that will be a post request used to enter information into our database
+   
+});
+
+
+
+
+
 //Set a GET request to eventpage.ejs
 
-app.get("/event/:eventname", function(req, res){
+app.get("/event/:id", function(req, res){
     
-    var eventname = req.params.eventname;
+    //var eventname = req.params.eventname;
     
     //How do I retrieve the image url form script.js?
     //How do I return, the event name?
-    res.render("eventpage.ejs", {eventname: eventname});
+    //res.render("eventpage.ejs", {eventname: eventname});
     
 });
 
@@ -92,12 +112,29 @@ app.get("/event/:eventname", function(req, res){
 /*********** POST requests made here ***************/
 
 
+
+
 /**** This function will ask the user for the num of random events that they want to display on their page ****/
-app.post("/numofevents", function(req, res){
+app.post("/events", function(req, res){
     
+    //This is a post request to add an event into a database
+    //first, you need to install body-parser in order to retreive data from your forms
+    
+    var eventName = req.body.eventName; //This succesfully works! We can retreive data from our "/events/new" form page!
+    
+    console.log(eventName);
+    
+    
+    res.send("This is a post request test");
     
     
 });
+
+
+
+
+
+
 
 
 

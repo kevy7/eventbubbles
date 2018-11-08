@@ -5,8 +5,13 @@ var eventSchema = new mongoose.Schema({
    eventImage: String,
    eventDate: Date,
    timestamp: Date,
-   eventAddress: String,
-   eventLocationName: String,
+   eventAddress: [
+        {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: 'eventAdddress'
+        }
+       
+       ],
    eventDescription: String,
    eventParticipant: [
         {

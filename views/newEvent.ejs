@@ -1,0 +1,66 @@
+<% include partials/header %>
+
+<!-- /events/new -->
+
+<div class="newEvent">
+    
+    
+    <h1>Create a new Event</h1>
+    
+    <!-- POST request to enter event information into the database -->
+    <form class="inputEvent" action="/events" method="POST">
+        
+        <label for="event_name">Event Name</label>
+        <input type="text" name="eventName" id="event_name">
+        
+        <label for="event_image">Event Image</label>
+        <input type="text" name="eventImage" id="event_image">
+        
+        <label for="event_date">Event Date</label>
+        <input type="date" name="eventDate" id="event_date">
+        
+        
+        
+        <!-- Address information placed here -->
+        <label for="street_address">Street Address</label>
+        <input type="text" name="streetAddress" id="street_address">
+        
+        <label for="event_city">City</label>
+        <input type="text" name="eventCity" id="event_city">
+        
+        <label for="event_state">State</label>
+        <input type="text" name="eventState" id="event_state">
+        
+        <label for="event_zip_code">Zip code</label>
+        <input type="number" name="eventZipCode" id="event_zip_code">
+        <!-- End of address information -->
+        
+        
+        
+        
+        
+        
+        <label for"event_description">Event Description</label>
+        <textarea name="eventDescription" rows="4" cols="50" id="event_description"></textarea>
+        
+        
+        
+        <button>Submit Event!</button>
+        
+    </form>
+    
+    
+    
+    
+</div>
+
+
+
+
+
+
+
+
+</div>
+
+<% include partials/footer %>
