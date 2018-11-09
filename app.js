@@ -52,21 +52,25 @@ app.get("/", function(req, res){
 app.get("/events", function(req, res){
     
     
-    /*
-    Use this to generate random words
-    faker.lorem.words()
+    
+    //Write a query to get event data from my database
+    //Retreive all events from my database
+    
+    Events.find({}, function(err, event){
+       if (err){
+           console.log(err);
+       } 
+       else {
+            console.log(event);//Outputs an array with a list of all event objects
+           
+           //Remember, in order to render a page using ejs, I need to install the ejs package
+            res.render("index.ejs", event);
+       }
+    }); //There are currently three created events in the database
     
     
-    images from faker currently does not work
-    
-    */
-    
-     //generates a list of fake names and pushes it to FakeEventName array
     
     
-    
-    //Remember, in order to render a page using ejs, I need to install the ejs package
-    res.render("index.ejs", {});
     
 });
 
