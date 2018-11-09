@@ -120,12 +120,76 @@ app.post("/events", function(req, res){
     //This is a post request to add an event into a database
     //first, you need to install body-parser in order to retreive data from your forms
     
-    var eventName = req.body.eventName; //This succesfully works! We can retreive data from our "/events/new" form page!
     
-    console.log(eventName);
+    var addressData = {
+        
+        eventStreetAddress: req.body.streetAddress,
+        eventCity: req.body.eventCity,
+        eventState: req.body.eventState,
+        eventZipCode: req.body.eventZipCode
+        
+          
+    };//This needs to be pushed into the database
     
     
-    res.send("This is a post request test");
+    var eventData = {
+        
+         eventName: req.body.eventName,
+         eventImage: req.body.eventImage,
+         eventDate: req.body.eventDate,
+         eventDescription: req.body.eventDescription,
+         
+        
+    };
+    
+    
+    // console.log(eventData);
+    // console.log(addressData);
+    
+    
+    
+    
+    //Enter adddress into the database and then place that address into the newly entered event
+    eventAddress.create(addressData, function(err, address){
+       if(err){
+           console.log("There was an error entering the address into the database. Dang it!!");
+       } 
+       else {
+           //Else, the address was succusfully pushed into the database
+           console.log(address);
+           
+           Events.create(eventData, function(err, event){
+              if (err){
+                  console.log(err);
+              } 
+              else {
+                  
+                  
+                  //console.log(event);
+                  //This should already created the event
+                  //We're going to push the address id into our event
+                  event.eventAddress.push(address);
+                  
+                  event.save(function(err, data){
+                     if(err){
+                         console.log(err);
+                     } 
+                     else {
+                         console.log(data);
+                     }
+                  });
+                  
+                  
+                  
+                  
+              }
+           });
+           
+       }
+    });
+    
+    
+    res.redirect("/events/new");
     
     
 });
@@ -162,7 +226,12 @@ What to do next?
         /event/eventnamehere
         
         -This will redirect the user to the desired web page
-        
+    
+    
+    
+    
+    now that I can enter events into my database, I need to figure a way to display all of the events that are stored within my database
+    
         
 
 
