@@ -2,50 +2,6 @@
 
 <!-- This will serve as my main page -->
 <!-- This site is bascially going to be a static site. A lot of data is going to be pulled from faker.js. This site will serve as an alpha -->
-<div class="navbar">
-    
-    <div class="home">
-        <a>Home</a>
-    </div>
-    
-    <div class="rightbar">
-        <a>Settings</a>
-        <a>Login</a>
-    </div>
-    
-    
-</div>
-
-
-<div class="container">
-    
-    <div class="vertnavbar">
-        
-        <ul class="vertnavbarfields">
-            
-            <li>
-                <a class="vertfields activate">Event Bubbles</a>
-            </li>
-            
-            <li class="friends">
-                <a class="vertfields">Friends</a>
-                <ul class="subcontent">
-                    <li><a>Friend 1</a></li>
-                    <li><a>Friend 1</a></li>
-                    <li><a>Friend 1</a></li>
-                    <li><a>Friend 1</a></li>
-                    <li><a>Friend 1</a></li>
-                    <li><a>Friend 1</a></li>
-                </ul>
-            </li>
-            
-            <li>
-                <a class="vertfields">Messages</a>
-            </li>
-        </ul> 
-    </div> <!-- vertnavbar -->
-    
-    
 
     
     <div class="eventpage">
@@ -57,28 +13,34 @@
         
             <h2 class="eventtitleheader">
                 
-                 <%= eventname %>
+                 <%= event.eventName %>
                 
             </h2>
             
             <!-- Is there a way to retrieve the image from our script.js or index.ejs file into here? I guess a database is needed to do so -->
-            <img class="eventpageimage" src="https://images.unsplash.com/photo-1528360983277-13d401cdc186?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=89da2618e73e395491d2c33022d0564d&auto=format&fit=crop&w=1350&q=80">
+            <img class="eventpageimage" src="<%= event.eventImage %>">
             
         </div>
         
         <div class="eventpagedescription">
             
-            <h3 class="eventpagedate">Oct 15, 2018</h3>
-            <p class="eventpagelocation">Tokyo, Japan</p>
-            <p class="eventpageaddress">[Place Address Here]</p>
-            <p class="eventpageinfo">
-                I'm planning a tript to Japan! If anyone want's to join, please join this event.
-            </p>
-            
-            
-            
+            <h3 class="eventpagedate"> <%= event.eventDate %> </h3>
+            <p class="eventpageaddress"> <%= address.eventStreetAddress %></p>
+            <p class="eventpageaddress"> <%= address.eventCity %>, <%= address.eventState %></p>
+            <p class="eventpageaddress"> <%= address.eventZipCode %></p>
             
         </div>
+        
+        <div class="infoGroup">
+            
+            <h3 class="infoGroupHeader">Event Description</h3>
+            <p class="eventpageinfo">
+                <%= event.eventDescription %>
+            </p>
+            
+        </div>
+        
+        
         
        
         
@@ -118,7 +80,42 @@
         </div>
         
       
-        
+        <div class="infoGroup">
+            <!-- Event Comments -->
+            
+            <h3 class="infoGroupHeader">Comments</h3>
+            <div>
+                <form class="commentInput" action="/events/<%=event._id%>" method="POST">
+                    <label for="comment_inputs">Input Comments....</label>
+                    <textarea name="userComment" class="commentTextArea" rows="5" col="50" id="comment_input"></textarea>
+                    <div class="commentButtons">
+                        <button>Comment</button>
+                    </div>
+                </form>
+                
+            </div>
+            
+            
+            <div class="displayComments">
+                
+                <!-- Create a dynamic way to display all user comments in here -->
+                
+                
+                <!-- Create a forloop here to loop through your comment object and to display all of your comments -->
+                
+                <!-- To work on -->
+                
+                <% event.eventComments.forEach(function(commentObject){ %>
+                
+                <p><%= commentObject.comment %></p>
+                
+                <% }); %>
+                
+            </div>
+            
+            
+            
+        </div>
         
         
         

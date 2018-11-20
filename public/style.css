@@ -264,7 +264,7 @@ i:hover{
 
 .titleandheader .eventpageimage{
 
-    width: 90%;
+    width: 60%;
     height: 250px;
     border-radius: .25rem;
     display: block;
@@ -273,28 +273,35 @@ i:hover{
 
 }
 
-.eventpagedescription{
-    width:100%;
+/*.eventpagedescription{*/
+/*    width:100%;*/
     /*background-color: gray;*/
     
+/*}*/
+
+.eventpage div p {
+    margin: 0px;
 }
 
-.eventpagedescription *{
-    margin: 0px;
+
+
+
+/*.eventpagedescription *{*/
+/*    margin: 0px;*/
     
-}
+/*}*/
 
-.eventpagetaskstab *{
-    margin: 0px;
-}
+/*.eventpagetaskstab *{*/
+/*    margin: 0px;*/
+/*}*/
 
-.eventpagefriends *{
-    margin: 0px;
-}
+/*.eventpagefriends *{*/
+/*    margin: 0px;*/
+/*}*/
 
-.eventpagevideosandphotos *{
-    margin: 0px;
-}
+/*.eventpagevideosandphotos *{*/
+/*    margin: 0px;*/
+/*}*/
 
 hr{
     color: #ddd;
@@ -315,6 +322,37 @@ hr{
 .eventpage div *{
     text-indent: 10px;
 }
+
+
+/*** Editing the comment form for an event page ***/
+.commentInput{
+    /*display: grid;*/
+    /*grid-template-columns: 100%;*/
+    
+}
+
+.commentTextArea {
+    width: 100%;
+    border-width: 0px 0px 0px 0px;
+    padding: 0px;
+    background-color: rgb(249, 249, 249);
+    border-color: rgb(140, 137, 136);
+    
+}
+.eventpage div .infoGroupHeader .commentInput .commentButtons{
+    width: 100%;
+    padding: 0px;
+    margin: 0px;
+}
+
+.commentButtons button {
+    float: right;
+    margin-left: 2px;
+    margin-right: 2px;
+}
+
+
+
 
 
 

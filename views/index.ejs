@@ -94,6 +94,39 @@
         
         
         <!-- Write a code here to loop through each event that is stored within your database -->
+        <% events.forEach(function(event){  %>
+        
+        
+            <div class="eventbubble">
+                
+                <!-- placed a link div outside of our image tag-->
+                <a href="/events/<%= event._id %>">
+                    <img class="eventimage" src="<%= event.eventImage %>">
+                </a>
+                
+                
+                <!--icons will be placed here-->
+                
+                <div class="eventicons">
+                    
+                    <i class="fa fa-users users" aria-hidden="true"></i>
+                    <i class="fa fa-comments iconright" aria-hidden="true"></i>
+                    <i class="fa fa-video-camera iconright" aria-hidden="true"></i>
+                    
+                </div>
+                
+                <p class="eventtitle"> <%= event.eventName %> </p>
+                
+                <p class="eventdate"> <%= event.eventDate %></p>
+               
+                
+            </div>
+            
+
+        <% }); %>
+        
+        
+        
         
         
         

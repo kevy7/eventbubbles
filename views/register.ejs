@@ -32,15 +32,24 @@
 				
 				<div class="registerDiv">
 				    
-				    <form class="LoginForm" action="/login" method="POST">
+				    <form class="RegisterForm" action="/register" method="POST">
+				        
+				        <label class="inputLabel" for="firstName">First Name</label>
+				        <input class="inputText" type="text" name="firstname" id="firstName">
+				        
+				        <label class="inputLabel" for="lastName">Last Name</label>
+				        <input class="inputText" type="text" name="lastname" id="lastName">
 				        
 				        <label class="inputLabel" for="userName">User Name</label>
 				        <input class="inputText" type="text" name="username" id="userName">
 				        
+				        <label class="inputLabel" for="email">Email</label>
+				        <input class="inputText" type="email" name="email" id="email">
+				        
 				        <label class="inputLabel" for="userPassword">Password</label>
 				        <input class="inputText" type="password" name="password" id="userPassword">
 				        
-				        <button class="Login">Login</button>
+				        <button class="SignUpButton">Sign Up</button>
 				        
 				        
 				    </form>
@@ -49,3 +58,5 @@
 				</div>
 		</html>
 		
+
+

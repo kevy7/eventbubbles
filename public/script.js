@@ -22,15 +22,15 @@ var eventimages = document.querySelectorAll(".Events .eventbubble .eventimage");
 //Create a for loop with eventbubbles instead
 
 // for (var a = 0; a < eventbubbles.length; a++){
-
-
-//     //Find a way to pass the event titles into the addEventListener function below
+//     //Find a way to pass the event id into the addEventListener function below
 
 //     eventbubbles[a].children[0].addEventListener("click", function(){
+//         //We're adding an eventlistener to the image of our event
         
-//         //No other codes work in here because this is technically a function, that makes sense!!!
 
 //         var eventtitle = this.parentElement.children[2].outerText;
+        
+        
         
 //         window.location.href = "https://personal-web-projects-kevy7.c9users.io/event/" + eventtitle;
         
@@ -48,9 +48,11 @@ var eventimages = document.querySelectorAll(".Events .eventbubble .eventimage");
         
 //         */
 //     });
-    
-    
 // }
+
+
+
+
 
 
 var plusButton = document.querySelector(".plusbutton");

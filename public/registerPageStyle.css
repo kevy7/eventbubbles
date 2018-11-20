@@ -1,0 +1,31 @@
+.RegisterForm{
+    display: grid;
+    grid-template-columns: 100%;
+    width: 40%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.inputText{
+    padding: .375rem .75rem;
+}
+
+.inputLabel{
+    margin-bottom: .5rem;
+}
+
+.SignUpButton{
+    margin-top: .5rem;
+}
+
+
+
+.jumbotron{
+    text-align: center;
+}
+
+
+
+
+/* Styling the sign up button */
+
