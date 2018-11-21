@@ -24,13 +24,7 @@ var eventSchema = new mongoose.Schema({
             {
                 //List of comments that were posted into this event
                 type: mongoose.Schema.Types.ObjectId,
-                ref: 'Comments',
-                commentCreatedBy: {
-                    
-                    //The user that created this comment
-                    type: mongoose.Schema.Types.ObjectId,
-                    ref: "User"
-                }
+                ref: 'Comments'
             }
         ],
     createdby: {

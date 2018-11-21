@@ -239,7 +239,8 @@ app.get("/events/:id", isLoggedIn, function(req, res){
     
     
     //This will populate our comments for us so that we can have access to them rather than having access to their id's
-    Events.findById(eventID).populate("eventComments").exec(function(err, event){
+    Events.findById(eventID).populate("eventComments").populate("createdby").exec(function(err, event){
+    //we also populated createdby so that we can retreive the user that created the event
     
     //Events.findById(eventID, function(err, event){
        if(err){
@@ -257,6 +258,10 @@ app.get("/events/:id", isLoggedIn, function(req, res){
                    console.log(err);
                }
                else{
+                   
+                   
+                   
+                   
                    
                    res.render("eventpage.ejs", {event: event, address: address});
                    
@@ -311,7 +316,9 @@ app.post("/events", isLoggedIn, function(req, res){
          eventName: req.body.eventName,
          eventImage: req.body.eventImage,
          eventDate: req.body.eventDate,
+         timestamp: new Date(),
          eventDescription: req.body.eventDescription,
+         createdby: req.user._id
          
         
     };
@@ -378,7 +385,8 @@ app.post("/events/:id", isLoggedIn, function(req, res){
     var eventID = req.params.id; //Getting our event id
     var comment = {
         comment: req.body.userComment,
-        timestamp: new Date()
+        timestamp: new Date(),
+        commentCreatedBy: req.user._id
     };
     
     
@@ -405,6 +413,8 @@ app.post("/events/:id", isLoggedIn, function(req, res){
                      } 
                      else {
                          console.log(data);
+                         //returns the data, which is the comment and event
+                         
                      }
                   });
               }
@@ -460,5 +470,8 @@ What to do next?
             -Associating events and comments with a user
 
 
+WORK ON THIS!!!!!
+    figure out how to associate a user with the comment that they created on an event post
+    
 
 */
