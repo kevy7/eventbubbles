@@ -1,0 +1,69 @@
+<% include partials/header %>
+
+
+
+<!-- /events/new -->
+
+<div class="newEvent">
+    
+    
+    <h1>Create a new Event</h1>
+    
+    <!-- POST request to enter event information into the database -->
+    <!-- method-override is needed to make a PUT request with your forms -->
+    <form class="inputEvent" action="/events/<%=event._id%>?_method=PUT" method="POST">
+                                                            
+        <label for="event_name">Event Name</label>
+        <input type="text" name="eventName" id="event_name" value="<%= event.eventName %>">
+        
+        <label for="event_image">Event Image</label>
+        <input type="text" name="eventImage" id="event_image" value="<%= event.eventImage %>">
+        
+        <label for="event_date">Event Date</label>
+        <input type="date" name="eventDate" id="event_date" value="<%= event.eventDate %>">
+        
+        
+        
+        <!-- Address information placed here -->
+        <label for="street_address">Street Address</label>
+        <input type="text" name="streetAddress" id="street_address" value="<%= event.eventAddress[0].eventStreetAddress %>">
+        
+        <label for="event_city">City</label>
+        <input type="text" name="eventCity" id="event_city" value="<%= event.eventAddress[0].eventCity %>">
+        
+        <label for="event_state">State</label>
+        <input type="text" name="eventState" id="event_state" value="<%= event.eventAddress[0].eventState %>">
+        
+        <label for="event_zip_code">Zip code</label>
+        <input type="number" name="eventZipCode" id="event_zip_code" value="<%= event.eventAddress[0].eventZipCode %>">
+        <!-- End of address information -->
+        
+        
+        
+        
+        
+        
+        <label for="event_description">Event Description</label>
+        <textarea name="eventDescription" rows="4" cols="50" id="event_description"><%= event.eventDescription %></textarea>
+        
+        
+        
+        <button>Update</button>
+        
+    </form>
+    
+    
+    
+    
+</div>
+
+
+
+
+
+
+
+
+</div>
+
+<% include partials/footer %>

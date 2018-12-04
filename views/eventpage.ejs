@@ -88,7 +88,7 @@
             
             <h3 class="infoGroupHeader">Comments</h3>
             <div>
-                <form class="commentInput" action="/events/<%=event._id%>" method="POST">
+                <form class="commentInput" action="/events/<%=event._id%>/comment" method="POST">
                     <label for="comment_inputs">Input Comments....</label>
                     <textarea name="userComment" class="commentTextArea" rows="5" col="50" id="comment_input"></textarea>
                     <div class="commentButtons">
@@ -111,7 +111,7 @@
                 <% event.eventComments.forEach(function(commentObject){ %>
                 
                 <p><%= commentObject.comment %></p>
-                <p>Created By: <%= commentObject.commentCreatedBy %></p>
+                <p>Created By: <%= commentObject.username %></p>
                 
                 <% }); %>
                 

@@ -30,6 +30,7 @@ mongoose.connect("mongodb://localhost:27017/reference_demo", {
 var passport = require("passport");
 var LocalStrategy = require("passport-local");
 var passportLocalMongoose = require("passport-local-mongoose");
+var methodOverride = require("method-override");
 
 
 
@@ -54,6 +55,8 @@ app.use(passport.session());
 passport.use(new LocalStrategy(User.authenticate()));
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
+
+app.use(methodOverride("_method")); //we're telling methodOverride to find _method
 
 
 
@@ -84,9 +87,53 @@ var usersinput = 0;
      res.locals.currentUser = req.user;
      next();
  }); //With this code, the current logged in user will be passed on to every route
- 
- 
- 
+
+
+//The function below will check if the current user's id that's logged in matches the user_id belonging to an event
+//Creating my own personal middleware below, read and try to understand how middleware works
+//The code below should now be used as our middleware
+
+//WORK ON THIS - this code should be correct
+function authorizeEvent(req, res, next){
+    
+    var eventID = req.params.id;
+    
+    //first authenticate the current user that's logged in
+    if(req.isAuthenticated()){
+        //If user is authenticated, then find the event that they're trying to edit, update, or remove
+        Events.findById(eventID, function(err, event) {
+            
+            if(err){
+                res.redirect("back");
+            }
+            else {
+                
+                //write an if statement here, only render page if the user's id matches with the user id from the event
+                
+                if(req.user._id.equals(event.createdby)){
+                    //res.render("eventpageEDIT.ejs", {event: event
+                    
+                    //do i need to include next() for this?
+                    next();
+                }
+                else {
+                    res.send("You don't have permission to do that");
+                }
+            }
+        
+        
+        });
+    }
+    else {
+        res.redirect("back");
+    }
+    
+}
+
+
+
+
+
 
 
 
@@ -162,6 +209,150 @@ app.get("/logout", function(req, res){
 
 
 
+/********
+ * 
+ * Editing an event GET and PUT routes
+ * 
+ * 
+ * 
+ * *****/
+
+
+//route for EDITing and event
+// /events/:id/edit
+// this will take us to the edit page for an event
+// REMEMBER to pass isLoggedIn as an argument
+app.get("/events/:id/edit", authorizeEvent, function(req, res) {
+    
+    var eventID = req.params.id;
+    //console.log(eventID);
+    
+    //console.log(eventID);
+    
+    Events.findById(eventID).populate("eventAddress").exec(function(err, event) {
+        if(err){
+            console.log(err);
+        }
+        else {
+            res.render("eventpageEDIT.ejs", {event: event} );
+            //console.log(event.eventAddress[0].eventStreetAddress);
+        }
+    });
+});
+
+
+//ROUTE for PUT request, to make edit and changes to an event 
+//Update EVENT based on user's changes.
+//Need to install method-override for PUT request
+app.put("/events/:id", authorizeEvent, function(req, res){
+    
+    //console.log("PUT request should've been made");
+    
+    //Try to use findbyandupdate here
+    //console.log(req.params.id);
+    
+    
+    
+    
+    
+    //example to populate adress
+    //Events.findById(eventID).populate("eventComments").populate("createdby").exec(function(err, event){
+    
+    
+    Events.findById(req.params.id).populate("eventAddress").exec(function(err, event){
+        if(err){
+            console.log(err);
+        }
+        else {
+            //Event is placed to be used in here
+            //create an update function here, to update the event that is within the database
+            
+            event.eventName = req.body.eventName;
+            event.eventImage = req.body.eventImage;
+            event.eventDate = req.body.eventDate;
+            event.eventDescription = req.body.eventDescription;
+            
+            //Updating the event's address
+            //Resolve this: I accidently made my database to collect an array of eventaddresses. An event should only have one eventAddress
+            event.eventAddress[0].eventStreetAddress = req.body.streetAddress;
+            event.eventAddress[0].eventCity = req.body.eventCity;
+            event.eventAddress[0].eventState = req.body.eventState;
+            event.eventAddress[0].eventZipCode = req.body.eventZipCode;
+            
+            event.save(function(err){
+                if(err){
+                    console.log(err);
+                }
+                else{
+                    console.log("Succesfully updated the Event in the database");
+                    event.eventAddress[0].save(function(err){
+                       if(err){
+                           console.log(err);
+                       } 
+                       else{
+                            console.log("succesfully updated the address in the database");
+                            res.redirect("/events");
+                       }
+                    });
+                    
+                }
+            })
+        }
+    });
+    
+    
+    //Try to use findbyandupdate here
+    
+    
+});
+
+
+
+
+
+//DELETE route
+//This route is responsible for deleting a user's created event. Only the user who created the event should be able to delete it.
+
+app.delete("/events/:id/delete", authorizeEvent, function(req, res){
+    
+    
+    //Find the current event within the database first
+    Events.findById(req.params.id).populate("eventAddress").exec(function(err, event){
+        if(err){
+            console.log(err);
+        }
+        else{
+            eventAddress.findOneAndRemove({_id: event.eventAddress[0]._id}, function(err){
+                if(err){
+                    console.log(err);
+                }
+                else {
+                    //event address was removed here
+                    console.log("The address was removed - first");
+                    Events.findOneAndRemove({ _id: event._id}, function(err){
+        
+                    if(err){
+                        console.log(err);
+                        }
+                    else {
+                        //remove the event here
+                            console.log("The event was removed - final");
+                        }
+                    });
+                    
+                    
+                }
+            });
+        }
+    });
+    
+    
+});
+
+
+
+
+
 
 
 
@@ -196,8 +387,11 @@ app.get("/events", isLoggedIn, function(req, res){
     //req.user will output us the current user that's logged in
     
     
+    //used to find all events created by the current user that's logged in
+    //createdby: req.user._id
+    
     //Find all events created by the current user that's currently logged in
-    Events.find({createdby: req.user._id}, function(err, events){
+    Events.find({}, function(err, events){
        if (err){
            console.log(err);
        } 
@@ -380,13 +574,14 @@ app.post("/events", isLoggedIn, function(req, res){
 
 //Post request for entering comments into a specific event
 
-app.post("/events/:id", isLoggedIn, function(req, res){
+app.post("/events/:id/comment", isLoggedIn, function(req, res){
     
     var eventID = req.params.id; //Getting our event id
     var comment = {
         comment: req.body.userComment,
         timestamp: new Date(),
-        commentCreatedBy: req.user._id
+        commentCreatedBy: req.user._id,
+        username: req.user.username
     };
     
     

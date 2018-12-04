@@ -119,6 +119,34 @@
                 
                 <p class="eventdate"> <%= event.eventDate %></p>
                
+               
+               <!--
+                Display the remove and edit buttons here, only if the event belongs to the current user that's logged in
+                
+                event.createdby will return to us the id of the user that created the event
+                
+                Create a code that checks if the current user's id that is logged in matches with the id of the user that created the event
+                
+               -->
+               
+              
+              
+                
+                <% if(event.createdby.equals(currentUser._id) === true ){  %>
+                    <!-- if the logged in user's id matches with the user id who created the event, create a delete and edit button here -->
+                    
+                    <!-- create a form and a button with to make a DELETE request -->
+                    
+                    <form action="/events/<%= event._id %>/delete?_method=DELETE" method="POST"><button class="delete-btn">DELETE</button></form>
+                     <!-- will delete user created event -->
+                    <button class="edit-btn"><a href="/events/<%= event._id %>/edit">EDIT</a></button> <!-- can edit user created event -->
+                    
+                    <!-- replace ":id" with the id of the event -->
+                <% } else {%>
+                    
+                    <!-- Do nothing here -->
+                    
+                <% } %>
                 
             </div>
             
