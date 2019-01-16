@@ -337,6 +337,7 @@ app.delete("/events/:id/delete", authorizeEvent, function(req, res){
                     else {
                         //remove the event here
                             console.log("The event was removed - final");
+                            res.redirect("/events");
                         }
                     });
                     
@@ -636,7 +637,7 @@ app.post("/events/:id/comment", isLoggedIn, function(req, res){
 app.listen(process.env.PORT, process.env.IP, function(){
    console.log("Your server has initiated!"); 
 });
-
+//By using process.env.PORT it is defualted to port 8080
 
 
 

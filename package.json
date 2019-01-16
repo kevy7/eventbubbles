@@ -4,12 +4,14 @@
   "description": "The social event creation app. Create events with friends. Pariticipate, volunteer, and invite others to join!",
   "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node app.js"
   },
   "author": "Kevin Yang",
   "license": "ISC",
   "dependencies": {
     "body-parser": "^1.18.3",
+    "bulma": "^0.7.2",
     "ejs": "^2.6.1",
     "faker": "^4.1.0",
     "method-override": "^3.0.0",
